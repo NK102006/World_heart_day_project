@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Heart Day 2026 - Clinical Pharma Portal</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                        script: ['Dancing Script', 'cursive'],
+                    },
+                    colors: {
+                        pharma: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            200: '#99f6e4',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                        },
+                        clinical: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#1e40af',
+                            900: '#0f172a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* ==========================================================================
+           LOCKED-IN PHARMA BACKGROUND & DOTS SETTINGS (Easily tweakable here)
+           ========================================================================== */
+        :root {
+            --bg-top: #DBEBFC;
+            --bg-mid: #C9E0FA;
+            --bg-bot: #B9D6F6;
+            --dot-opacity: 0.14;
+            --dot-opacity-secondary: 0.10;
+            --dot-size: 1.25px;
+            --dot-spacing: 28px;
+            --watermark-opacity: 0.55;
+
+            /* Brand Pharma Color Tokens */
+            --brand-teal: #0D9488;
+            --brand-cyan: #0284C7;
+            --brand-royal: #1E40AF;
+            --brand-emerald: #10B981;
+            --surface-glass: rgba(255, 255, 255, 0.95);
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--bg-top) 0%, var(--bg-mid) 50%, var(--bg-bot) 100%);
+            color: #0F172A;
+            overflow-x: hidden;
+            transition: background 0.15s ease-out;
+        }
+
+        /* Richer Animated Pharma Background Orbs */
+        .ambient-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(65px);
+            opacity: calc(var(--watermark-opacity) * 0.95);
+            pointer-events: none;
+            z-index: 0;
+            animation: floatOrb 16s ease-in-out infinite alternate;
+        }
+
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(2, 132, 199, 0.42) 0%, rgba(13, 148, 136, 0.14) 70%);
+            top: -110px;
+            left: -120px;
+        }
+
+        .orb-2 {
+            width: 560px;
+            height: 560px;
+            background: radial-gradient(circle, rgba(30, 64, 175, 0.34) 0%, rgba(14, 165, 233, 0.12) 70%);
+            bottom: -170px;
+            right: -100px;
+            animation-delay: -7s;
+        }
+
+        .orb-3 {
+            width: 390px;
+            height: 390px;
+            background: radial-gradient(circle, rgba(13, 148, 136, 0.32) 0%, rgba(30, 64, 175, 0.10) 70%);
+            top: 32%;
+            left: 52%;
+            animation-delay: -11s;
+        }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0px, 0px) scale(1); }
+            50% { transform: translate(38px, -28px) scale(1.07); }
+            100% { transform: translate(-28px, 32px) scale(0.95); }
+        }
+
+        /* Animated Floating Pharma Dots in Background */
+        .floating-dot {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: var(--watermark-opacity);
+            animation: pulseDrift 7s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseDrift {
+            0% { transform: translateY(0px) translateX(0px) scale(0.95); }
+            50% { transform: translateY(-18px) translateX(10px) scale(1.2); }
+            100% { transform: translateY(12px) translateX(-10px) scale(1); }
+        }
+
+        /* Animated ECG Pulse Line */
+        .ecg-line {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: drawEcg 8s linear infinite;
+        }
+
+        @keyframes drawEcg {
+            0% { stroke-dashoffset: 1000; opacity: 0.25; }
+            20% { opacity: 0.75; }
+            80% { opacity: 0.75; }
+            100% { stroke-dashoffset: 0; opacity: 0.25; }
+        }
+
+        /* Slow floating geometric heart/molecular watermark */
+        .floating-watermark {
+            opacity: var(--watermark-opacity);
+            animation: slowPulse 9s ease-in-out infinite;
+        }
+
+        @keyframes slowPulse {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-12px) scale(1.025); }
+        }
+
+        /* Glassmorphic Card Surface - high contrast against clinical blue BG */
+        .pharma-card {
+            background: var(--surface-glass);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.95);
+            box-shadow: 0 24px 55px -12px rgba(15, 23, 42, 0.14), 0 6px 20px -3px rgba(2, 132, 199, 0.10);
+        }
+
+        @keyframes pulseDrift {
+            0% { transform: translateY(0px) translateX(0px) scale(0.95); }
+            50% { transform: translateY(-18px) translateX(10px) scale(1.2); }
+            100% { transform: translateY(12px) translateX(-10px) scale(1); }
+        }
+
+        /* Animated ECG Pulse Line */
+        .ecg-line {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: drawEcg 8s linear infinite;
+        }
+
+        @keyframes drawEcg {
+            0% { stroke-dashoffset: 1000; opacity: 0.25; }
+            20% { opacity: 0.65; }
+            80% { opacity: 0.65; }
+            100% { stroke-dashoffset: 0; opacity: 0.25; }
+        }
+
+        /* Slow floating geometric heart/molecular watermark */
+        .floating-watermark {
+            opacity: var(--particle-opacity);
+            animation: slowPulse 9s ease-in-out infinite;
+        }
+
+        @keyframes slowPulse {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-12px) scale(1.025); }
+        }
+
+        /* Glassmorphic Card Surface - high contrast against darker blue BG */
+        .pharma-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.95);
+            box-shadow: 0 24px 55px -12px rgba(15, 23, 42, 0.16), 0 6px 20px -3px rgba(2, 132, 199, 0.12);
+        }
+
+        /* Primary Gradient Button */
+        .btn-pharma-primary {
+            background: linear-gradient(135deg, #0D9488 0%, #0284C7 100%);
+            box-shadow: 0 8px 20px -4px rgba(2, 132, 199, 0.38);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-pharma-primary:hover:not(:disabled) {
+            background: linear-gradient(135deg, #0F766E 0%, #0369A1 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 12px 24px -4px rgba(2, 132, 199, 0.48);
+        }
+
+        .btn-pharma-primary:disabled {
+            background: linear-gradient(135deg, #94A3B8 0%, #CBD5E1 100%);
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+
+        /* Custom Scrollbar for Promises Grid */
+        .custom-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #F1F5F9;
+            border-radius: 8px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #94A3B8;
+            border-radius: 8px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: #0D9488;
+        }
+
+        /* Dynamic Medical Dot-Matrix Grid Pattern Overlay */
+        .bg-medical-grid {
+            background-image: 
+                radial-gradient(rgba(30, 64, 175, var(--dot-opacity)) var(--dot-size), transparent var(--dot-size)),
+                radial-gradient(rgba(13, 148, 136, var(--dot-opacity-secondary)) var(--dot-size), transparent var(--dot-size));
+            background-size: var(--dot-spacing) var(--dot-spacing);
+            background-position: 0 0, calc(var(--dot-spacing) / 2) calc(var(--dot-spacing) / 2);
+        }
+
+        /* Custom Range Slider Styling */
+        input[type="range"].pharma-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 6px;
+            border-radius: 999px;
+            background: #E2E8F0;
+            outline: none;
+        }
+        input[type="range"].pharma-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0D9488, #0284C7);
+            cursor: pointer;
+            border: 2px solid #ffffff;
+            box-shadow: 0 2px 6px rgba(2, 132, 199, 0.35);
+            transition: transform 0.15s ease;
+        }
+        input[type="range"].pharma-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-teal-500 selection:text-white relative bg-medical-grid">
+
+    <!-- ================= LIGHT ANIMATED PHARMA BACKGROUND ================= -->
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+
+    <!-- Visible Animated Floating Pharma Particle Dots -->
+    <div class="floating-dot w-3 h-3 bg-sky-600/60 shadow-sm shadow-sky-500/50 top-[16%] left-[8%]" style="animation-delay: 0s;"></div>
+    <div class="floating-dot w-4 h-4 bg-teal-600/55 shadow-sm shadow-teal-500/50 top-[28%] left-[18%]" style="animation-delay: -2s;"></div>
+    <div class="floating-dot w-2.5 h-2.5 bg-blue-700/60 top-[68%] left-[12%]" style="animation-delay: -4s;"></div>
+    <div class="floating-dot w-3.5 h-3.5 bg-teal-600/60 top-[82%] left-[26%]" style="animation-delay: -1.5s;"></div>
+    <div class="floating-dot w-3 h-3 bg-sky-700/55 top-[20%] right-[24%]" style="animation-delay: -3.2s;"></div>
+    <div class="floating-dot w-4 h-4 bg-blue-600/50 top-[74%] right-[20%]" style="animation-delay: -5s;"></div>
+    <div class="floating-dot w-2.5 h-2.5 bg-emerald-600/60 top-[45%] left-[6%]" style="animation-delay: -2.7s;"></div>
+
+    <!-- Right-side Animated Clinical Cardio-Wave & Molecular Watermark (Replaces Pink Heart) -->
+    <div class="fixed right-[-40px] top-1/2 -translate-y-1/2 pointer-events-none z-0 hidden lg:block floating-watermark">
+        <svg width="540" height="500" viewBox="0 0 540 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Outer Clinical Geometric Heart Outline in Richer Teal/Blue -->
+            <path d="M270 430C270 430 95 315 95 175C95 112 144 65 202 65C237 65 258 83 270 105C282 83 303 65 338 65C396 65 445 112 445 175C445 315 270 430 270 430Z" 
+                  stroke="url(#tealCyanGrad)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.42"/>
+            
+            <!-- Secondary Offset Ring -->
+            <circle cx="385" cy="345" r="105" stroke="url(#tealCyanGrad)" stroke-width="3.5" stroke-dasharray="8 8" opacity="0.38"/>
+            
+            <!-- Animated ECG Wave Crossing the Heart -->
+            <path class="ecg-line" d="M30 230 H165 L188 190 L212 280 L242 130 L272 310 L298 205 L318 230 H490" 
+                  stroke="url(#ecgGrad)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+            <!-- Floating Pharma Molecular Hexagons -->
+            <g opacity="0.45" stroke="#1E40AF" stroke-width="2.5">
+                <polygon points="130,90 148,80 166,90 166,110 148,120 130,110" />
+                <line x1="166" y1="90" x2="188" y2="78" />
+                <circle cx="188" cy="78" r="5" fill="#0D9488" />
+            </g>
+
+            <defs>
+                <linearGradient id="tealCyanGrad" x1="95" y1="65" x2="445" y2="430" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#0D9488"/>
+                    <stop offset="0.5" stop-color="#0284C7"/>
+                    <stop offset="1" stop-color="#1E40AF"/>
+                </linearGradient>
+                <linearGradient id="ecgGrad" x1="30" y1="230" x2="490" y2="230" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#1E40AF" stop-opacity="0"/>
+                    <stop offset="0.3" stop-color="#0D9488"/>
+                    <stop offset="0.7" stop-color="#1E40AF"/>
+                    <stop offset="1" stop-color="#10B981" stop-opacity="0"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+
+    <!-- Left-side Visible Molecular Nodes -->
+    <div id="left-molecular-nodes" class="fixed left-8 bottom-12 pointer-events-none z-0 hidden xl:block transition-opacity" style="opacity: var(--watermark-opacity);">
+        <svg width="220" height="220" viewBox="0 0 220 220" fill="none">
+            <circle cx="50" cy="150" r="7" fill="#0D9488"/>
+            <circle cx="110" cy="110" r="9" fill="#0284C7"/>
+            <circle cx="170" cy="145" r="6" fill="#1E40AF"/>
+            <circle cx="110" cy="45" r="6" fill="#0D9488"/>
+            <line x1="50" y1="150" x2="110" y2="110" stroke="#1E40AF" stroke-width="2" stroke-dasharray="4 4"/>
+            <line x1="170" y1="145" x2="110" y2="110" stroke="#0D9488" stroke-width="2"/>
+            <line x1="110" y1="45" x2="110" y2="110" stroke="#0284C7" stroke-width="2"/>
+        </svg>
+    </div>
+
+    <!-- ================= TOP NAVIGATION BAR ================= -->
+    <header class="sticky top-0 z-30 bg-white/85 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between gap-4">
+            
+            <!-- Brand Identity -->
+            <div class="flex items-center gap-3.5 cursor-pointer" onclick="switchView('step1')">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-teal-600 via-cyan-600 to-blue-700 flex items-center justify-center text-white shadow-md shadow-cyan-500/20 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <i class="ph-fill ph-heartbeat text-2xl"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <h1 class="font-display font-extrabold text-slate-900 text-lg leading-tight tracking-tight">World Heart Day</h1>
+                        <span class="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-teal-50 text-teal-700 border border-teal-200">Pharma Initiative</span>
+                    </div>
+                    <p class="font-script text-teal-600 text-base leading-none mt-0.5">My Heart. My Promise.</p>
+                </div>
+            </div>
+
+            <!-- Interactive Page Switcher (So you can test all 3 screenshots easily) -->
+            <nav class="hidden md:flex items-center bg-slate-100/90 p-1 rounded-xl border border-slate-200/70">
+                <button id="nav-step1" onclick="switchView('step1')" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 bg-white text-teal-700 shadow-sm">
+                    <span class="w-4 h-4 rounded-full bg-teal-600 text-white text-[10px] flex items-center justify-center">1</span>
+                    Doctor Info
+                </button>
+                <button id="nav-step2" onclick="switchView('step2')" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
+                    <span class="w-4 h-4 rounded-full bg-slate-300 text-slate-700 text-[10px] flex items-center justify-center">2</span>
+                    Select 10 Promises
+                </button>
+                <button id="nav-directory" onclick="switchView('directory')" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
+                    <i class="ph-bold ph-users-three text-sm"></i>
+                    All Doctors Table
+                </button>
+            </nav>
+
+            <!-- Right Action Controls (Matching screenshot top-right) -->
+            <div class="flex items-center gap-2.5">
+                <button id="top-toggle-btn" onclick="toggleMainView()" class="btn-pharma-primary text-white text-xs font-semibold px-4 py-2.5 rounded-full flex items-center gap-1.5">
+                    <i id="top-toggle-icon" class="ph-bold ph-stethoscope text-sm"></i>
+                    <span id="top-toggle-text">All Doctors</span>
+                </button>
+
+                <!-- Employee Badge & Logout Pill -->
+                <div class="flex items-center bg-slate-100/90 border border-slate-200/90 rounded-full p-1 pl-3.5 gap-2">
+                    <div class="flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span class="text-xs font-bold text-slate-700 tracking-wide">EMP1001</span>
+                    </div>
+                    <button onclick="showToast('Session logged out safely (Demo mode)', 'info')" class="bg-white hover:bg-slate-50 text-slate-700 hover:text-teal-700 border border-slate-200/90 rounded-full px-3 py-1 text-xs font-semibold flex items-center gap-1 transition-colors shadow-2xs">
+                        <i class="ph-bold ph-sign-out text-teal-600"></i>
+                        <span>Logout</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile View Switcher Bar -->
+        <div class="flex md:hidden border-t border-slate-200/60 bg-slate-50/90 px-3 py-1.5 justify-around text-xs font-semibold">
+            <button onclick="switchView('step1')" id="mob-step1" class="text-teal-700 py-1 px-2 rounded-md bg-teal-50">1. Doctor Info</button>
+            <button onclick="switchView('step2')" id="mob-step2" class="text-slate-600 py-1 px-2 rounded-md">2. Promises (10)</button>
+            <button onclick="switchView('directory')" id="mob-directory" class="text-slate-600 py-1 px-2 rounded-md">3. All Doctors</button>
+        </div>
+    </header>
+
+    <!-- ================= MAIN WORKSPACE CONTENT ================= -->
+    <main class="flex-1 relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-8 py-8 flex flex-col items-center justify-center">
+
+        <!-- =================================================================== -->
+        <!-- PAGE 1: DOCTOR INFORMATION (Redesigned from Screenshot 1)           -->
+        <!-- =================================================================== -->
+        <section id="view-step1" class="w-full max-w-lg transition-all duration-300">
+            <div class="pharma-card rounded-2xl overflow-hidden relative">
+                <!-- Top 4px Pharma Gradient Bar -->
+                <div class="h-1.5 w-full bg-gradient-to-r from-teal-500 via-cyan-500 to-blue-600"></div>
+
+                <div class="p-6 sm:p-8">
+                    <!-- Step Header -->
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-cyan-50 text-cyan-700 border border-cyan-200/70">
+                            <i class="ph-fill ph-shield-check text-teal-600 text-xs"></i>
+                            Step 1 of 2 • Registration
+                        </span>
+                        <span class="text-xs font-medium text-slate-400">Cardiology Campaign</span>
+                    </div>
+
+                    <h2 class="font-display text-2xl font-extrabold text-slate-900 tracking-tight">Doctor Information</h2>
+                    <p class="text-slate-500 text-xs sm:text-sm mt-1 leading-relaxed">
+                        Enter the doctor's details and upload their photograph to feature on the personalized World Heart Day clinical pledge poster.
+                    </p>
+
+                    <!-- Registration Form -->
+                    <form id="doctor-form" onsubmit="handleStep1Submit(event)" class="mt-6 space-y-5">
+                        
+                        <!-- Field 1: Doctor's Full Name -->
+                        <div>
+                            <label class="flex items-center gap-2 text-xs font-bold text-slate-700 mb-2">
+                                <span class="w-5 h-5 rounded-full bg-gradient-to-br from-teal-600 to-cyan-600 text-white text-[11px] flex items-center justify-center font-bold shadow-xs">1</span>
+                                <span>Doctor's Full Name <span class="text-teal-600">*</span></span>
+                            </label>
+                            <div class="relative">
+                                <i class="ph-duotone ph-stethoscope absolute left-3.5 top-1/2 -translate-y-1/2 text-teal-600 text-lg"></i>
+                                <input 
+                                    type="text" 
+                                    id="input-doc-name" 
+                                    required
+                                    value="Dr. Sneha Roy, MD (Cardiology)"
+                                    placeholder="e.g. Dr. Sneha Roy, MD (Cardiology)" 
+                                    class="w-full pl-10 pr-4 py-2.5 bg-slate-50/70 hover:bg-white focus:bg-white text-slate-800 text-sm rounded-xl border border-slate-200 focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 outline-none transition-all placeholder:text-slate-400"
+                                />
+                            </div>
+                        </div>
+
+                        <!-- Field 2: Doctor Photograph Upload -->
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <label class="flex items-center gap-2 text-xs font-bold text-slate-700">
+                                    <span class="w-5 h-5 rounded-full bg-gradient-to-br from-teal-600 to-cyan-600 text-white text-[11px] flex items-center justify-center font-bold shadow-xs">2</span>
+                                    <span>Doctor Photograph <span class="text-teal-600">*</span></span>
+                                </label>
+                                <button type="button" onclick="loadSampleDoctorPhoto()" class="text-[11px] font-semibold text-cyan-600 hover:text-teal-700 underline cursor-pointer">
+                                    Use Sample Avatar
+                                </button>
+                            </div>
+
+                            <label for="doc-photo-input" id="dropzone-box" class="group cursor-pointer flex flex-col items-center justify-center border-2 border-dashed border-cyan-300/90 hover:border-teal-500 bg-gradient-to-b from-cyan-50/40 to-teal-50/30 hover:from-cyan-50/70 hover:to-teal-50/60 rounded-2xl p-6 transition-all text-center relative overflow-hidden">
+                                <input type="file" id="doc-photo-input" accept="image/*" class="hidden" onchange="handlePhotoUpload(event)">
+                                
+                                <!-- Default Upload Prompt -->
+                                <div id="upload-default-view" class="flex flex-col items-center">
+                                    <div class="w-12 h-12 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-600 flex items-center justify-center mb-3 group-hover:scale-110 group-hover:bg-teal-600 group-hover:text-white transition-all shadow-xs">
+                                        <i class="ph-duotone ph-cloud-arrow-up text-2xl"></i>
+                                    </div>
+                                    <p class="text-xs sm:text-sm font-bold text-slate-800 group-hover:text-teal-800 transition-colors">
+                                        Click or drag & drop Doctor Photo
+                                    </p>
+                                    <p class="text-[11px] text-slate-400 mt-1">
+                                        Supports high-resolution JPEG, PNG or WEBP (Max 5MB)
+                                    </p>
+                                </div>
+
+                                <!-- Preview State when photo is chosen -->
+                                <div id="upload-preview-view" class="hidden flex-col items-center">
+                                    <div class="relative">
+                                        <img id="photo-preview-img" src="https://placehold.co/120x120/0d9488/ffffff?text=DR" alt="Doctor Preview" class="w-16 h-16 rounded-full object-cover border-2 border-teal-500 shadow-md">
+                                        <span class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs shadow">
+                                            <i class="ph-bold ph-check"></i>
+                                        </span>
+                                    </div>
+                                    <p id="photo-filename" class="text-xs font-bold text-teal-800 mt-2">dr_sneha_roy_portrait.jpg</p>
+                                    <span class="text-[11px] text-cyan-600 font-medium mt-0.5">Click to replace photograph</span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- Field 3: Clinic / Hospital Name -->
+                        <div>
+                            <label class="flex items-center gap-2 text-xs font-bold text-slate-700 mb-2">
+                                <span class="w-5 h-5 rounded-full bg-gradient-to-br from-teal-600 to-cyan-600 text-white text-[11px] flex items-center justify-center font-bold shadow-xs">3</span>
+                                <span>Clinic / Hospital Name <span class="text-teal-600">*</span></span>
+                            </label>
+                            <div class="relative">
+                                <i class="ph-duotone ph-buildings absolute left-3.5 top-1/2 -translate-y-1/2 text-teal-600 text-lg"></i>
+                                <input 
+                                    type="text" 
+                                    id="input-clinic-name" 
+                                    required
+                                    value="Apollo Heart Institute & Cardiocare"
+                                    placeholder="e.g. Heart Care Clinic" 
+                                    class="w-full pl-10 pr-4 py-2.5 bg-slate-50/70 hover:bg-white focus:bg-white text-slate-800 text-sm rounded-xl border border-slate-200 focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 outline-none transition-all placeholder:text-slate-400"
+                                />
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="pt-2">
+                            <button type="submit" class="btn-pharma-primary w-full py-3.5 px-6 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2 cursor-pointer">
+                                <span>Save & Next</span>
+                                <i class="ph-bold ph-arrow-right"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- =================================================================== -->
+        <!-- PAGE 2: SELECT 10 HEART PROMISES (Redesigned from Screenshot 2)     -->
+        <!-- =================================================================== -->
+        <section id="view-step2" class="w-full max-w-3xl hidden transition-all duration-300">
+            
+            <!-- Top Back Row -->
+            <div class="w-full flex items-center justify-between mb-4">
+                <button onclick="switchView('step1')" class="bg-white/90 hover:bg-white text-slate-700 hover:text-teal-700 border border-slate-200/90 px-4 py-2 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-xs transition-all cursor-pointer">
+                    <i class="ph-bold ph-arrow-left text-teal-600"></i>
+                    <span>Back</span>
+                </button>
+
+                <div class="flex items-center gap-2">
+                    <button onclick="quickSelectTen()" class="bg-teal-50 hover:bg-teal-100 text-teal-700 border border-teal-200 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer flex items-center gap-1 shadow-2xs">
+                        <i class="ph-bold ph-magic-wand"></i>
+                        <span>Select 10 Demo</span>
+                    </button>
+                    <button onclick="clearAllPromises()" class="bg-white/80 hover:bg-white text-slate-600 border border-slate-200/80 px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer">
+                        Reset
+                    </button>
+                </div>
+            </div>
+
+            <div class="pharma-card rounded-2xl overflow-hidden relative">
+                <!-- Top 4px Pharma Gradient Bar -->
+                <div class="h-1.5 w-full bg-gradient-to-r from-teal-500 via-cyan-500 to-emerald-500"></div>
+
+                <div class="p-6 sm:p-8">
+                    <!-- Header & Live Selection Counter -->
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-slate-200/80">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h2 class="font-display text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">Select 10 Heart Promises</h2>
+                                <span id="promise-count-badge" class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-teal-50 text-teal-700 border border-teal-200">
+                                    0 / 10 Selected
+                                </span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-500 mt-1 flex items-center gap-1.5">
+                                <i class="ph-fill ph-user-circle text-teal-600 text-base"></i>
+                                <span>Doctor: <strong id="active-doc-label" class="text-slate-800">Dr. Sneha Roy, MD</strong> • <span id="active-clinic-label" class="text-cyan-700 font-medium">Apollo Heart Institute</span></span>
+                            </p>
+                        </div>
+
+                        <!-- Circular Progress Ring -->
+                        <div class="flex items-center gap-3 bg-slate-50 px-3.5 py-2 rounded-xl border border-slate-200/70 self-start sm:self-auto">
+                            <div class="w-24 bg-slate-200 h-2 rounded-full overflow-hidden">
+                                <div id="promise-progress-bar" class="bg-gradient-to-r from-teal-500 to-cyan-500 h-full transition-all duration-300" style="width: 0%"></div>
+                            </div>
+                            <span id="promise-percent-text" class="text-xs font-bold text-teal-700">0%</span>
+                        </div>
+                    </div>
+
+                    <!-- Scrollable 2-Column Grid of Heart Promises -->
+                    <div id="promises-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mt-5 max-h-[410px] overflow-y-auto pr-1.5 custom-scroll">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+
+                    <!-- Bottom Submit Button -->
+                    <div class="mt-6 pt-4 border-t border-slate-100">
+                        <button id="btn-save-promises" onclick="completePromiseSelection()" class="btn-pharma-primary w-full py-3.5 px-6 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2 cursor-pointer">
+                            <span id="btn-promises-label">Selected (0 / 10)</span>
+                            <i class="ph-bold ph-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- =================================================================== -->
+        <!-- PAGE 3: ALL DOCTORS DIRECTORY TABLE (Redesigned from Screenshot 3)  -->
+        <!-- =================================================================== -->
+        <section id="view-directory" class="w-full max-w-6xl hidden transition-all duration-300">
+            
+            <!-- Quick Pharma KPI Summary Strip -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
+                <div class="pharma-card rounded-xl p-4 flex items-center justify-between">
+                    <div>
+                        <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Total Registered Doctors</p>
+                        <p id="stat-total-docs" class="font-display text-2xl font-extrabold text-slate-900 mt-0.5">7</p>
+                    </div>
+                    <div class="w-11 h-11 rounded-xl bg-teal-50 border border-teal-100 text-teal-600 flex items-center justify-center text-xl">
+                        <i class="ph-duotone ph-stethoscope"></i>
+                    </div>
+                </div>
+                <div class="pharma-card rounded-xl p-4 flex items-center justify-between">
+                    <div>
+                        <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Completed 10 Pledges</p>
+                        <p id="stat-completed-pledges" class="font-display text-2xl font-extrabold text-emerald-600 mt-0.5">5</p>
+                    </div>
+                    <div class="w-11 h-11 rounded-xl bg-emerald-50 border border-emerald-100 text-emerald-600 flex items-center justify-center text-xl">
+                        <i class="ph-duotone ph-seal-check"></i>
+                    </div>
+                </div>
+                <div class="pharma-card rounded-xl p-4 flex items-center justify-between">
+                    <div>
+                        <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Active Field Rep</p>
+                        <p class="font-display text-lg font-extrabold text-cyan-700 mt-0.5">EMP1001 • West Zone</p>
+                    </div>
+                    <div class="w-11 h-11 rounded-xl bg-cyan-50 border border-cyan-100 text-cyan-600 flex items-center justify-center text-xl">
+                        <i class="ph-duotone ph-identification-badge"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Table Card -->
+            <div class="pharma-card rounded-2xl overflow-hidden">
+                <div class="h-1.5 w-full bg-gradient-to-r from-teal-500 via-cyan-500 to-blue-600"></div>
+
+                <div class="p-5 sm:p-7">
+                    <!-- Table Controls Header -->
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
+                        <div class="flex items-center gap-2.5 text-xs font-medium text-slate-600">
+                            <span>Show</span>
+                            <select id="entries-per-page" onchange="handleEntriesChange()" class="bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 text-slate-800 font-semibold focus:outline-none focus:border-teal-500 cursor-pointer">
+                                <option value="10" selected>10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                            </select>
+                            <span>entries</span>
+                        </div>
+
+                        <div class="flex flex-wrap items-center gap-3">
+                            <!-- Search Input -->
+                            <div class="relative flex-1 sm:flex-initial flex items-center gap-2">
+                                <span class="text-xs font-semibold text-slate-500 hidden sm:inline">Search:</span>
+                                <div class="relative w-full sm:w-64">
+                                    <i class="ph-bold ph-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                                    <input 
+                                        type="text" 
+                                        id="doctor-search-input"
+                                        oninput="renderDoctorsTable()"
+                                        placeholder="Search doctor or clinic..." 
+                                        class="w-full pl-9 pr-4 py-2 bg-slate-50/90 focus:bg-white rounded-xl border border-slate-200 focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 text-xs text-slate-800 outline-none transition-all"
+                                    />
+                                </div>
+                            </div>
+
+                            <!-- Add New Doctor CTA -->
+                            <button onclick="switchView('step1')" class="btn-pharma-primary text-white text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-1.5 cursor-pointer">
+                                <i class="ph-bold ph-plus-circle text-sm"></i>
+                                <span>Register Doctor</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Responsive Data Table -->
+                    <div class="overflow-x-auto rounded-xl border border-slate-200/90">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-gradient-to-r from-slate-50 via-cyan-50/40 to-teal-50/40 border-b border-slate-200/90 text-[11px] font-bold text-slate-500 uppercase tracking-wider select-none">
+                                    <th onclick="sortDoctorsBy('name')" class="py-3.5 px-4 cursor-pointer hover:text-teal-700 transition-colors">
+                                        Doctor Name <i id="sort-icon-name" class="ph-bold ph-arrows-down-up text-[10px] ml-0.5 text-slate-400"></i>
+                                    </th>
+                                    <th onclick="sortDoctorsBy('clinic')" class="py-3.5 px-4 cursor-pointer hover:text-teal-700 transition-colors">
+                                        Clinic Name <i id="sort-icon-clinic" class="ph-bold ph-arrows-down-up text-[10px] ml-0.5 text-slate-400"></i>
+                                    </th>
+                                    <th onclick="sortDoctorsBy('pledges')" class="py-3.5 px-4 cursor-pointer hover:text-teal-700 transition-colors">
+                                        Promises <i id="sort-icon-pledges" class="ph-bold ph-arrows-down-up text-[10px] ml-0.5 text-slate-400"></i>
+                                    </th>
+                                    <th onclick="sortDoctorsBy('date')" class="py-3.5 px-4 cursor-pointer hover:text-teal-700 transition-colors">
+                                        Date Created <i id="sort-icon-date" class="ph-bold ph-arrow-down text-[10px] ml-0.5 text-teal-600"></i>
+                                    </th>
+                                    <th class="py-3.5 px-4">Enabled</th>
+                                    <th class="py-3.5 px-4 text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="doctors-table-body" class="divide-y divide-slate-100 text-sm bg-white/70">
+                                <!-- Populated via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination Footer -->
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-5 text-xs text-slate-500">
+                        <p id="table-showing-text">Showing 1 to 7 of 7 entries for <strong class="text-slate-700">"EMP1001"</strong></p>
+                        <div class="flex items-center gap-1.5">
+                            <button onclick="showToast('Already on first page', 'info')" class="px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-400 cursor-not-allowed font-semibold">Previous</button>
+                            <button class="px-3 py-1.5 rounded-lg bg-teal-600 text-white font-bold shadow-xs">1</button>
+                            <button onclick="showToast('All entries displayed on Page 1', 'info')" class="px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 font-semibold transition-colors cursor-pointer">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= FLOATING COLOR PALETTE GUIDE DRAWER BUTTON ================= -->
+    <div class="fixed bottom-4 left-4 z-40">
+        <button onclick="togglePaletteModal()" class="bg-slate-900/90 hover:bg-slate-900 text-white backdrop-blur-md px-3.5 py-2 rounded-full text-xs font-semibold shadow-lg flex items-center gap-2 border border-slate-700/80 cursor-pointer transition-all hover:scale-105">
+            <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-teal-400 to-cyan-400"></span>
+            <span>Pharma Color Palette & Hex Codes</span>
+        </button>
+    </div>
+
+    <!-- ================= COLLAPSIBLE THEME SETTINGS / EXPORT CSS DRAWER ================= -->
+    <div class="fixed bottom-4 right-4 z-40 flex flex-col items-end">
+        
+        <!-- Collapsible Customizer & CSS Export Card (Collapsed by default so UI stays clean) -->
+        <div id="bg-customizer-panel" class="hidden w-80 sm:w-96 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-200/90 overflow-hidden mb-2.5 transition-all duration-200">
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-teal-900 px-4 py-3 flex items-center justify-between text-white">
+                <div class="flex items-center gap-2">
+                    <i class="ph-fill ph-sliders-horizontal text-teal-400 text-base"></i>
+                    <div>
+                        <h4 class="font-display font-bold text-xs tracking-wide">Theme Settings / Export CSS</h4>
+                        <p class="text-[10px] text-slate-300">Locked-in `:root` variables & live scale</p>
+                    </div>
+                </div>
+                <button onclick="toggleCustomizerPanel()" class="text-slate-300 hover:text-white p-1 rounded-lg hover:bg-white/10 transition-colors cursor-pointer" title="Minimize">
+                    <i class="ph-bold ph-x text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Preset Quick Buttons -->
+            <div class="px-4 pt-3 pb-2 bg-slate-50/80 border-b border-slate-200/70 flex items-center justify-between gap-1.5">
+                <button onclick="applyBgPreset(22, 8, 1.0, 35)" class="flex-1 py-1.5 px-2 rounded-lg text-[11px] font-bold bg-white hover:bg-teal-50 text-slate-700 hover:text-teal-700 border border-slate-200/90 transition-all cursor-pointer shadow-2xs">
+                    Subtle & Soft
+                </button>
+                <button onclick="applyBgPreset(42, 14, 1.25, 55)" class="flex-1 py-1.5 px-2 rounded-lg text-[11px] font-bold bg-teal-50 text-teal-700 border border-teal-200 transition-all cursor-pointer shadow-2xs">
+                    Locked Default
+                </button>
+                <button onclick="applyBgPreset(75, 24, 1.6, 75)" class="flex-1 py-1.5 px-2 rounded-lg text-[11px] font-bold bg-white hover:bg-cyan-50 text-slate-700 hover:text-cyan-700 border border-slate-200/90 transition-all cursor-pointer shadow-2xs">
+                    Deep Pharma
+                </button>
+            </div>
+
+            <!-- Sliders Body -->
+            <div class="p-4 space-y-3 text-xs">
+                
+                <!-- 1. Blue Background Depth Scale -->
+                <div>
+                    <div class="flex items-center justify-between mb-1">
+                        <label for="scale-blue-depth" class="font-bold text-slate-700 flex items-center gap-1.5">
+                            <span id="swatch-live-blue" class="w-3 h-3 rounded-full border border-slate-300 inline-block" style="background: #C9E0FA;"></span>
+                            <span>1. Blue BG Depth (`--bg-mid`)</span>
+                        </label>
+                        <span id="val-blue-depth" class="font-mono font-bold text-cyan-700 bg-cyan-50 px-1.5 py-0.5 rounded text-[11px]">42% (#C9E0FA)</span>
+                    </div>
+                    <input id="scale-blue-depth" type="range" min="0" max="100" value="42" oninput="updateBgScales()" class="w-full pharma-slider" />
+                </div>
+
+                <!-- 2. Grid Dots Visibility / Opacity Scale -->
+                <div>
+                    <div class="flex items-center justify-between mb-1">
+                        <label for="scale-dots-opacity" class="font-bold text-slate-700">
+                            2. Grid Dots (`--dot-opacity`)
+                        </label>
+                        <span id="val-dots-opacity" class="font-mono font-bold text-teal-700 bg-teal-50 px-1.5 py-0.5 rounded text-[11px]">0.14 (14%)</span>
+                    </div>
+                    <input id="scale-dots-opacity" type="range" min="0" max="45" value="14" oninput="updateBgScales()" class="w-full pharma-slider" />
+                </div>
+
+                <!-- 3. Dot Size Scale -->
+                <div>
+                    <div class="flex items-center justify-between mb-1">
+                        <label for="scale-dots-size" class="font-bold text-slate-700">
+                            3. Dot Size (`--dot-size`)
+                        </label>
+                        <span id="val-dots-size" class="font-mono font-bold text-slate-700 bg-slate-100 px-1.5 py-0.5 rounded text-[11px]">1.25px</span>
+                    </div>
+                    <input id="scale-dots-size" type="range" min="0.5" max="3.0" step="0.05" value="1.25" oninput="updateBgScales()" class="w-full pharma-slider" />
+                </div>
+
+                <!-- 4. Floating Animated Particles & ECG Watermark Opacity -->
+                <div>
+                    <div class="flex items-center justify-between mb-1">
+                        <label for="scale-particles" class="font-bold text-slate-700">
+                            4. Watermark (`--watermark-opacity`)
+                        </label>
+                        <span id="val-particles" class="font-mono font-bold text-slate-700 bg-slate-100 px-1.5 py-0.5 rounded text-[11px]">0.55 (55%)</span>
+                    </div>
+                    <input id="scale-particles" type="range" min="0" max="100" value="55" oninput="updateBgScales()" class="w-full pharma-slider" />
+                </div>
+
+                <!-- Live CSS Code Preview Box -->
+                <div class="pt-1">
+                    <pre id="css-export-preview" class="bg-slate-900 text-teal-300 font-mono text-[10px] p-2.5 rounded-xl overflow-x-auto leading-relaxed border border-slate-800">:root {
+  --bg-top: #DBEBFC;
+  --bg-mid: #C9E0FA;
+  --bg-bot: #B9D6F6;
+  --dot-opacity: 0.14;
+  --dot-size: 1.25px;
+  --watermark-opacity: 0.55;
+}</pre>
+                </div>
+
+                <!-- Copy Button -->
+                <div class="pt-1 flex items-center justify-between gap-2">
+                    <span id="summary-scale-text" class="text-[11px] font-semibold text-slate-500">Locked & Ready</span>
+                    <button onclick="copyBgSettings()" class="bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white text-xs font-bold px-3.5 py-2 rounded-xl flex items-center gap-1.5 transition-all cursor-pointer shadow-sm">
+                        <i class="ph-bold ph-copy"></i>
+                        <span>Copy `:root` & BG CSS</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Minimized Floating Pill Button -->
+        <button id="bg-customizer-toggle-btn" onclick="toggleCustomizerPanel()" class="bg-slate-900/90 hover:bg-teal-900 text-white backdrop-blur-md px-4 py-2 rounded-full text-xs font-semibold shadow-xl flex items-center gap-2 border border-slate-700/80 cursor-pointer transition-all hover:scale-105">
+            <i class="ph-bold ph-code text-teal-400 text-sm"></i>
+            <span>Theme Settings / Export CSS</span>
+        </button>
+    </div>
+
+    <!-- Color Palette Reference Modal -->
+    <div id="palette-modal" class="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs hidden items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 animate-fadeIn">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                <h3 class="font-display font-bold text-slate-900 text-base flex items-center gap-2">
+                    <i class="ph-fill ph-palette text-teal-600 text-lg"></i>
+                    Pharma Clinical Color Tokens
+                </h3>
+                <button onclick="togglePaletteModal()" class="text-slate-400 hover:text-slate-700">
+                    <i class="ph-bold ph-x text-lg"></i>
+                </button>
+            </div>
+            <p class="text-xs text-slate-500 mt-2">
+                Use these exact hex codes in your React/Tailwind project to replace the pink/red heart theme with a trustworthy clinical cardiology look:
+            </p>
+            <div class="space-y-2.5 mt-4 text-xs">
+                <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 border border-slate-200/70">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-6 h-6 rounded-lg bg-[#0D9488] shadow-xs"></span>
+                        <div>
+                            <p class="font-bold text-slate-800">Primary Medical Teal</p>
+                            <p class="text-[11px] text-slate-400">Buttons, Active Borders, Badges</p>
+                        </div>
+                    </div>
+                    <code class="font-mono font-bold text-teal-700 bg-teal-50 px-2 py-1 rounded">#0D9488</code>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 border border-slate-200/70">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-6 h-6 rounded-lg bg-[#0284C7] shadow-xs"></span>
+                        <div>
+                            <p class="font-bold text-slate-800">Secondary Clinical Cyan</p>
+                            <p class="text-[11px] text-slate-400">Gradients, Icons, Links</p>
+                        </div>
+                    </div>
+                    <code class="font-mono font-bold text-cyan-700 bg-cyan-50 px-2 py-1 rounded">#0284C7</code>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 border border-slate-200/70">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-6 h-6 rounded-lg bg-[#10B981] shadow-xs"></span>
+                        <div>
+                            <p class="font-bold text-slate-800">Vitality Emerald</p>
+                            <p class="text-[11px] text-slate-400">10 Pledges Badge, Enabled Toggle</p>
+                        </div>
+                    </div>
+                    <code class="font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-1 rounded">#10B981</code>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 border border-slate-200/70">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-6 h-6 rounded-lg bg-[#B3D1F5] border border-blue-400"></span>
+                        <div>
+                            <p class="font-bold text-slate-800">Clinical Sky-Slate Blue</p>
+                            <p class="text-[11px] text-slate-400">Main Page Background Tint</p>
+                        </div>
+                    </div>
+                    <code class="font-mono font-bold text-blue-800 bg-blue-100 px-2 py-1 rounded">#B3D1F5</code>
+                </div>
+            </div>
+            <button onclick="togglePaletteModal()" class="mt-5 w-full py-2.5 rounded-xl bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 transition-colors">
+                Got It
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- ================= APPLICATION LOGIC ================= -->
+    <script>
+        // 12 Heart Promises Data (Matching Screenshot 2 + full 12 items for 10 selection)
+        const heartPromises = [
+            {
+                id: 1,
+                title: "Take Medicines on Time",
+                desc: "I will never skip my daily heart, BP, or diabetes medications.",
+                icon: "ph-pill",
+                iconBg: "bg-teal-50 text-teal-600 border-teal-200"
+            },
+            {
+                id: 2,
+                title: "Cut Down on Salt",
+                desc: "I promise to reduce salty snacks and extra salt in my meals.",
+                icon: "ph-grains-slash",
+                iconBg: "bg-cyan-50 text-cyan-600 border-cyan-200"
+            },
+            {
+                id: 3,
+                title: "Cut Sugary Drinks",
+                desc: "I promise to reduce soft drinks, packaged sweet drinks, and extra sugar in tea or coffee.",
+                icon: "ph-cup-soda",
+                iconBg: "bg-blue-50 text-blue-600 border-blue-200"
+            },
+            {
+                id: 4,
+                title: "Avoid Trans Fats",
+                desc: "I will limit processed foods and choose healthy cooking oils.",
+                icon: "ph-avocado",
+                iconBg: "bg-emerald-50 text-emerald-600 border-emerald-200"
+            },
+            {
+                id: 5,
+                title: "Never Ignore Symptoms",
+                desc: "I will seek medical help immediately for chest pain or breathlessness.",
+                icon: "ph-siren",
+                iconBg: "bg-amber-50 text-amber-600 border-amber-200"
+            },
+            {
+                id: 6,
+                title: "Digital Detox Before Bed",
+                desc: "I will put away screens at night for deeper, heart-healing rest.",
+                icon: "ph-moon-stars",
+                iconBg: "bg-indigo-50 text-indigo-600 border-indigo-200"
+            },
+            {
+                id: 7,
+                title: "30 Mins Daily Brisk Walk",
+                desc: "I commit to regular cardiovascular exercise at least 5 days a week.",
+                icon: "ph-sneaker-move",
+                iconBg: "bg-teal-50 text-teal-600 border-teal-200"
+            },
+            {
+                id: 8,
+                title: "Quit Tobacco & Smoking",
+                desc: "I pledge to stay away from active and passive smoking for arterial health.",
+                icon: "ph-prohibit",
+                iconBg: "bg-cyan-50 text-cyan-600 border-cyan-200"
+            },
+            {
+                id: 9,
+                title: "Monitor BP & Lipids Regularly",
+                desc: "I will check my blood pressure, cholesterol, and blood sugar periodically.",
+                icon: "ph-activity",
+                iconBg: "bg-blue-50 text-blue-600 border-blue-200"
+            },
+            {
+                id: 10,
+                title: "Practice Daily Stress Relief",
+                desc: "I will use mindfulness and breathing exercises to keep cortisol levels low.",
+                icon: "ph-flower-lotus",
+                iconBg: "bg-emerald-50 text-emerald-600 border-emerald-200"
+            },
+            {
+                id: 11,
+                title: "Eat Fiber-Rich Whole Foods",
+                desc: "I will include fresh vegetables, fruits, and whole grains in every meal.",
+                icon: "ph-leaf",
+                iconBg: "bg-teal-50 text-teal-600 border-teal-200"
+            },
+            {
+                id: 12,
+                title: "Maintain Optimal Body Weight",
+                desc: "I will strive to maintain a healthy BMI and waist-to-hip ratio.",
+                icon: "ph-scales",
+                iconBg: "bg-cyan-50 text-cyan-600 border-cyan-200"
+            }
+        ];
+
+        // Selected Promises State (Pre-select 4 so the user immediately sees active vs inactive card styling)
+        let selectedPromises = new Set([1, 2, 4, 5]);
+
+        // Doctors Directory State (Combining realistic cardiologists + entries from Screenshot 3)
+        let doctorsList = [
+            {
+                id: 101,
+                name: "Dr. Sneha Roy",
+                clinic: "Apollo Heart Institute & Cardiocare",
+                pledges: 10,
+                date: "10/23/2026",
+                enabled: true,
+                avatar: "https://placehold.co/80x80/0d9488/ffffff?text=SR"
+            },
+            {
+                id: 102,
+                name: "Dr. Rajeshwar Mehta",
+                clinic: "Fortis Escorts Heart Centre",
+                pledges: 10,
+                date: "10/23/2026",
+                enabled: true,
+                avatar: "https://placehold.co/80x80/0284c7/ffffff?text=RM"
+            },
+            {
+                id: 103,
+                name: "Dr. Ananya Deshmukh",
+                clinic: "Narayana Health City Clinic",
+                pledges: 0,
+                date: "10/23/2026",
+                enabled: false,
+                avatar: "https://placehold.co/80x80/475569/ffffff?text=AD"
+            },
+            {
+                id: 104,
+                name: "Dr. Vikramaditya Patel",
+                clinic: "CIMS Hospital Cardiology Wing",
+                pledges: 10,
+                date: "10/22/2026",
+                enabled: true,
+                avatar: "https://placehold.co/80x80/1e40af/ffffff?text=VP"
+            },
+            {
+                id: 105,
+                name: "Dr. Meera Krishnan",
+                clinic: "Medanta The Medicity Heart Clinic",
+                pledges: 10,
+                date: "10/21/2026",
+                enabled: true,
+                avatar: "https://placehold.co/80x80/0f766e/ffffff?text=MK"
+            },
+            {
+                id: 106,
+                name: "Dr. Siddharth Verma",
+                clinic: "Max Super Speciality Hospital",
+                pledges: 10,
+                date: "10/21/2026",
+                enabled: true,
+                avatar: "https://placehold.co/80x80/0369a1/ffffff?text=SV"
+            },
+            {
+                id: 107,
+                name: "Dr. Nandini Kulkarni",
+                clinic: "Zydus Heart & Vascular Institute",
+                pledges: 10,
+                date: "10/20/2026",
+                enabled: true,
+                avatar: "https://placehold.co/80x80/0d9488/ffffff?text=NK"
+            }
+        ];
+
+        let currentView = 'step1';
+        let uploadedAvatarUrl = "https://placehold.co/80x80/0d9488/ffffff?text=SR";
+        let currentSortField = 'date';
+        let currentSortAsc = false;
+
+        // Switch between Step 1, Step 2, and Directory Table
+        function switchView(view) {
+            currentView = view;
+            const views = ['step1', 'step2', 'directory'];
+            views.forEach(v => {
+                const section = document.getElementById(`view-${v}`);
+                if (v === view) {
+                    section.classList.remove('hidden');
+                } else {
+                    section.classList.add('hidden');
+                }
+
+                // Update Desktop Nav Pills
+                const navBtn = document.getElementById(`nav-${v}`);
+                if (navBtn) {
+                    if (v === view) {
+                        navBtn.className = "px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 bg-white text-teal-700 shadow-sm";
+                    } else {
+                        navBtn.className = "px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 text-slate-600 hover:text-slate-900";
+                    }
+                }
+
+                // Update Mobile Nav Pills
+                const mobBtn = document.getElementById(`mob-${v}`);
+                if (mobBtn) {
+                    if (v === view) {
+                        mobBtn.className = "text-teal-700 py-1 px-2 rounded-md bg-teal-50 font-bold";
+                    } else {
+                        mobBtn.className = "text-slate-600 py-1 px-2 rounded-md";
+                    }
+                }
+            });
+
+            // Update top-right toggle button text (matching screenshots: "All Doctors" vs "Register Doctor")
+            const topToggleText = document.getElementById('top-toggle-text');
+            const topToggleIcon = document.getElementById('top-toggle-icon');
+            if (view === 'directory') {
+                topToggleText.textContent = 'Register Doctor';
+                topToggleIcon.className = 'ph-bold ph-plus-circle text-sm';
+            } else {
+                topToggleText.textContent = 'All Doctors';
+                topToggleIcon.className = 'ph-bold ph-stethoscope text-sm';
+            }
+
+            if (view === 'step2') {
+                renderPromisesGrid();
+            } else if (view === 'directory') {
+                renderDoctorsTable();
+            }
+        }
+
+        function toggleMainView() {
+            if (currentView === 'directory') {
+                switchView('step1');
+            } else {
+                switchView('directory');
+            }
+        }
+
+        // Handle Photo Upload Preview on Step 1
+        function handlePhotoUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                uploadedAvatarUrl = e.target.result;
+                document.getElementById('photo-preview-img').src = uploadedAvatarUrl;
+                document.getElementById('photo-filename').textContent = file.name;
+                document.getElementById('upload-default-view').classList.add('hidden');
+                document.getElementById('upload-preview-view').classList.remove('hidden');
+                document.getElementById('upload-preview-view').classList.add('flex');
+                showToast('Doctor photograph uploaded!', 'success');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function loadSampleDoctorPhoto() {
+            uploadedAvatarUrl = "https://placehold.co/120x120/0d9488/ffffff?text=Dr.+Roy";
+            document.getElementById('photo-preview-img').src = uploadedAvatarUrl;
+            document.getElementById('photo-filename').textContent = "dr_sneha_roy_cardiology.png";
+            document.getElementById('upload-default-view').classList.add('hidden');
+            document.getElementById('upload-preview-view').classList.remove('hidden');
+            document.getElementById('upload-preview-view').classList.add('flex');
+            showToast('Sample clinical portrait loaded', 'info');
+        }
+
+        // Step 1 Form Submit -> Go to Step 2
+        function handleStep1Submit(event) {
+            event.preventDefault();
+            const docName = document.getElementById('input-doc-name').value.trim() || 'Dr. Sneha Roy';
+            const clinicName = document.getElementById('input-clinic-name').value.trim() || 'Heart Care Clinic';
+
+            document.getElementById('active-doc-label').textContent = docName;
+            document.getElementById('active-clinic-label').textContent = clinicName;
+
+            showToast(`Saved details for ${docName}`, 'success');
+            switchView('step2');
+        }
+
+        // Render Step 2 Heart Promises Grid
+        function renderPromisesGrid() {
+            const grid = document.getElementById('promises-grid');
+            grid.innerHTML = '';
+
+            heartPromises.forEach(item => {
+                const isSelected = selectedPromises.has(item.id);
+                const card = document.createElement('div');
+                card.onclick = () => togglePromise(item.id);
+                card.className = `group cursor-pointer rounded-xl p-4 transition-all duration-200 border text-left flex flex-col justify-between relative select-none ${
+                    isSelected 
+                    ? 'bg-gradient-to-br from-teal-50/90 via-white to-cyan-50/80 border-teal-500 shadow-md shadow-teal-500/10 ring-1 ring-teal-500/50' 
+                    : 'bg-white/90 hover:bg-white border-slate-200/90 hover:border-cyan-300 shadow-2xs'
+                }`;
+
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-start justify-between gap-2 mb-2.5">
+                            <div class="w-9 h-9 rounded-lg border ${item.iconBg} flex items-center justify-center text-lg shadow-2xs">
+                                <i class="ph-duotone ${item.icon}"></i>
+                            </div>
+                            <div class="w-5 h-5 rounded-full flex items-center justify-center transition-all ${
+                                isSelected 
+                                ? 'bg-teal-600 text-white shadow-xs scale-105' 
+                                : 'border-2 border-slate-300 group-hover:border-teal-400 bg-white'
+                            }">
+                                ${isSelected ? '<i class="ph-bold ph-check text-[11px]"></i>' : ''}
+                            </div>
+                        </div>
+                        <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                            <span class="text-teal-600 font-extrabold mr-1">#${item.id}</span>${item.title}
+                        </h3>
+                        <p class="text-[11px] sm:text-xs text-slate-500 mt-1 leading-relaxed">
+                            ${item.desc}
+                        </p>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            updatePromiseCounterUI();
+        }
+
+        function togglePromise(id) {
+            if (selectedPromises.has(id)) {
+                selectedPromises.delete(id);
+            } else {
+                if (selectedPromises.size >= 10) {
+                    showToast('Maximum 10 Heart Promises can be selected', 'info');
+                    return;
+                }
+                selectedPromises.add(id);
+            }
+            renderPromisesGrid();
+        }
+
+        function quickSelectTen() {
+            selectedPromises = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+            renderPromisesGrid();
+            showToast('10 Heart Promises selected!', 'success');
+        }
+
+        function clearAllPromises() {
+            selectedPromises.clear();
+            renderPromisesGrid();
+        }
+
+        function updatePromiseCounterUI() {
+            const count = selectedPromises.size;
+            const percent = Math.min(100, Math.round((count / 10) * 100));
+
+            document.getElementById('promise-count-badge').textContent = `${count} / 10 Selected`;
+            document.getElementById('promise-progress-bar').style.width = `${percent}%`;
+            document.getElementById('promise-percent-text').textContent = `${percent}%`;
+
+            const btnLabel = document.getElementById('btn-promises-label');
+            if (count === 10) {
+                btnLabel.textContent = `Complete & Generate Pledge (${count} / 10)`;
+            } else {
+                btnLabel.textContent = `Selected (${count} / 10)`;
+            }
+        }
+
+        function completePromiseSelection() {
+            const count = selectedPromises.size;
+            if (count === 0) {
+                showToast('Please select at least 1 Heart Promise (or click Auto-Select 10)', 'info');
+                return;
+            }
+
+            const docName = document.getElementById('active-doc-label').textContent;
+            const clinicName = document.getElementById('active-clinic-label').textContent;
+
+            // Add or update doctor in directory
+            doctorsList.unshift({
+                id: Date.now(),
+                name: docName,
+                clinic: clinicName,
+                pledges: count,
+                date: "10/23/2026",
+                enabled: true,
+                avatar: uploadedAvatarUrl
+            });
+
+            showToast(`${docName} registered with ${count} Heart Pledges!`, 'success');
+            switchView('directory');
+        }
+
+        // Interactive Column Sorting for All Doctors Table
+        function sortDoctorsBy(field) {
+            if (currentSortField === field) {
+                currentSortAsc = !currentSortAsc;
+            } else {
+                currentSortField = field;
+                currentSortAsc = true;
+            }
+
+            doctorsList.sort((a, b) => {
+                let valA = a[field];
+                let valB = b[field];
+                if (typeof valA === 'string') {
+                    return currentSortAsc ? valA.localeCompare(valB) : valB.localeCompare(valA);
+                }
+                return currentSortAsc ? valA - valB : valB - valA;
+            });
+
+            renderDoctorsTable();
+        }
+
+        function handleEntriesChange() {
+            renderDoctorsTable();
+        }
+
+        // Render Page 3: All Doctors Table
+        function renderDoctorsTable() {
+            const tbody = document.getElementById('doctors-table-body');
+            const query = (document.getElementById('doctor-search-input')?.value || '').toLowerCase();
+            const maxEntries = parseInt(document.getElementById('entries-per-page')?.value || '10', 10);
+
+            const filtered = doctorsList.filter(doc => 
+                doc.name.toLowerCase().includes(query) || 
+                doc.clinic.toLowerCase().includes(query)
+            );
+
+            const visibleRows = filtered.slice(0, maxEntries);
+
+            tbody.innerHTML = '';
+
+            visibleRows.forEach(doc => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-cyan-50/40 transition-colors";
+
+                const pledgeBadge = doc.pledges > 0
+                    ? `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                         ${doc.pledges} Pledges
+                       </span>`
+                    : `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 border border-slate-200">
+                         0 Pledges
+                       </span>`;
+
+                tr.innerHTML = `
+                    <td class="py-3.5 px-4">
+                        <div class="flex items-center gap-3">
+                            <img src="${doc.avatar}" alt="${doc.name}" class="w-9 h-9 rounded-full object-cover border border-teal-200 shadow-2xs">
+                            <div>
+                                <p class="font-bold text-slate-800 text-xs sm:text-sm">${doc.name}</p>
+                                <p class="text-[11px] text-teal-600 font-medium">Cardiology Specialist</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="py-3.5 px-4 text-xs sm:text-sm text-slate-600 font-medium">${doc.clinic}</td>
+                    <td class="py-3.5 px-4">${pledgeBadge}</td>
+                    <td class="py-3.5 px-4 text-xs text-slate-500 font-medium">${doc.date}</td>
+                    <td class="py-3.5 px-4">
+                        <button onclick="toggleDoctorEnabled(${doc.id})" class="w-11 h-6 rounded-full transition-colors p-0.5 cursor-pointer flex items-center ${doc.enabled ? 'bg-teal-600 justify-end' : 'bg-slate-300 justify-start'}">
+                            <span class="w-5 h-5 rounded-full bg-white shadow-xs"></span>
+                        </button>
+                    </td>
+                    <td class="py-3.5 px-4 text-right">
+                        <div class="inline-flex items-center gap-1.5">
+                            <button onclick="editDoctorEntry(${doc.id})" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-cyan-50 hover:bg-cyan-100 text-cyan-700 border border-cyan-200/80 transition-colors cursor-pointer">
+                                Edit
+                            </button>
+                            <button onclick="deleteDoctorEntry(${doc.id})" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-100 hover:bg-rose-50 text-slate-600 hover:text-rose-600 border border-slate-200/80 hover:border-rose-200 transition-colors cursor-pointer">
+                                Delete
+                            </button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            // Update Stats
+            document.getElementById('stat-total-docs').textContent = doctorsList.length;
+            document.getElementById('stat-completed-pledges').textContent = doctorsList.filter(d => d.pledges >= 10).length;
+            const startIdx = visibleRows.length > 0 ? 1 : 0;
+            document.getElementById('table-showing-text').innerHTML = `Showing ${startIdx} to ${visibleRows.length} of ${filtered.length} entries for <strong class="text-slate-700">"EMP1001"</strong>`;
+        }
+
+        function toggleDoctorEnabled(id) {
+            const doc = doctorsList.find(d => d.id === id);
+            if (doc) {
+                doc.enabled = !doc.enabled;
+                renderDoctorsTable();
+                showToast(`${doc.name} status ${doc.enabled ? 'enabled' : 'disabled'}`, 'info');
+            }
+        }
+
+        function editDoctorEntry(id) {
+            const doc = doctorsList.find(d => d.id === id);
+            if (doc) {
+                document.getElementById('input-doc-name').value = doc.name;
+                document.getElementById('input-clinic-name').value = doc.clinic;
+                switchView('step1');
+                showToast(`Editing ${doc.name}`, 'info');
+            }
+        }
+
+        function deleteDoctorEntry(id) {
+            const idx = doctorsList.findIndex(d => d.id === id);
+            if (idx !== -1) {
+                const removed = doctorsList.splice(idx, 1)[0];
+                renderDoctorsTable();
+                showToast(`Removed ${removed.name}`, 'info');
+            }
+        }
+
+        function togglePaletteModal() {
+            const modal = document.getElementById('palette-modal');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            } else {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        }
+
+        // Toast Notification Helper
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            const icon = type === 'success' ? 'ph-check-circle text-teal-400' : 'ph-info text-cyan-400';
+
+            toast.className = "bg-slate-900/95 text-white px-4 py-2.5 rounded-xl shadow-xl border border-slate-700 text-xs font-semibold flex items-center gap-2.5 transition-all duration-300";
+            toast.innerHTML = `<i class="ph-fill ${icon} text-base"></i><span>${message}</span>`;
+
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(8px)';
+                setTimeout(() => toast.remove(), 300);
+            }, 2600);
+        }
+
+        // ================= BACKGROUND & DOTS SCALE ENGINE =================
+        function lerpColor(hexA, hexB, t) {
+            const a = parseInt(hexA.slice(1), 16);
+            const b = parseInt(hexB.slice(1), 16);
+            const r1 = (a >> 16) & 255, g1 = (a >> 8) & 255, b1 = a & 255;
+            const r2 = (b >> 16) & 255, g2 = (b >> 8) & 255, b2 = b & 255;
+            const r = Math.round(r1 + (r2 - r1) * t);
+            const g = Math.round(g1 + (g2 - g1) * t);
+            const bl = Math.round(b1 + (b2 - b1) * t);
+            return '#' + [r, g, bl].map(x => x.toString(16).padStart(2, '0')).join('').toUpperCase();
+        }
+
+        function updateBgScales() {
+            const blueScale = parseFloat(document.getElementById('scale-blue-depth').value);
+            const dotsScale = parseFloat(document.getElementById('scale-dots-opacity').value);
+            const dotSize = parseFloat(document.getElementById('scale-dots-size').value);
+            const particleScale = parseFloat(document.getElementById('scale-particles').value);
+
+            const t = blueScale / 100;
+
+            const primaryDotOpacity = (dotsScale / 100).toFixed(2);
+            const secondaryDotOpacity = ((dotsScale * 0.72) / 100).toFixed(2);
+            const watermarkOpacity = (particleScale / 100).toFixed(2);
+
+            const root = document.documentElement;
+            root.style.setProperty('--bg-top', stop1);
+            root.style.setProperty('--bg-mid', stop2);
+            root.style.setProperty('--bg-bot', stop3);
+            root.style.setProperty('--dot-opacity', primaryDotOpacity);
+            root.style.setProperty('--dot-opacity-secondary', secondaryDotOpacity);
+            root.style.setProperty('--dot-size', `${dotSize}px`);
+            root.style.setProperty('--watermark-opacity', watermarkOpacity);
+
+            // Update UI Badges
+            document.getElementById('val-blue-depth').textContent = `${blueScale}% (${stop2})`;
+            document.getElementById('swatch-live-blue').style.background = stop2;
+            document.getElementById('val-dots-opacity').textContent = `${primaryDotOpacity} (${dotsScale}%)`;
+            document.getElementById('val-dots-size').textContent = `${dotSize.toFixed(2)}px`;
+            document.getElementById('val-particles').textContent = `${watermarkOpacity} (${particleScale}%)`;
+            document.getElementById('summary-scale-text').textContent = `Blue ${blueScale}% • Dots ${primaryDotOpacity} • ${dotSize}px`;
+
+            const previewBox = document.getElementById('css-export-preview');
+            if (previewBox) {
+                previewBox.textContent = `:root {\n  --bg-top: ${stop1};\n  --bg-mid: ${stop2};\n  --bg-bot: ${stop3};\n  --dot-opacity: ${primaryDotOpacity};\n  --dot-size: ${dotSize}px;\n  --watermark-opacity: ${watermarkOpacity};\n}`;
+            }
+        }
+
+        function applyBgPreset(blueVal, dotsVal, sizeVal, particleVal) {
+            document.getElementById('scale-blue-depth').value = blueVal;
+            document.getElementById('scale-dots-opacity').value = dotsVal;
+            document.getElementById('scale-dots-size').value = sizeVal;
+            document.getElementById('scale-particles').value = particleVal;
+            updateBgScales();
+            showToast(`Applied Preset: Blue ${blueVal}%, Dots ${dotsVal}%`, 'info');
+        }
+
+        function toggleCustomizerPanel() {
+            const panel = document.getElementById('bg-customizer-panel');
+            panel.classList.toggle('hidden');
+        }
+
+        function copyBgSettings() {
+            const rootStyles = getComputedStyle(document.documentElement);
+            const stop1 = rootStyles.getPropertyValue('--bg-top').trim();
+            const stop2 = rootStyles.getPropertyValue('--bg-mid').trim();
+            const stop3 = rootStyles.getPropertyValue('--bg-bot').trim();
+            const op1 = rootStyles.getPropertyValue('--dot-opacity').trim();
+            const op2 = rootStyles.getPropertyValue('--dot-opacity-secondary').trim();
+            const dotSize = rootStyles.getPropertyValue('--dot-size').trim();
+            const watermarkOp = rootStyles.getPropertyValue('--watermark-opacity').trim();
+
+            const cssSnippet = `:root {\n  --bg-top: ${stop1};\n  --bg-mid: ${stop2};\n  --bg-bot: ${stop3};\n  --dot-opacity: ${op1};\n  --dot-opacity-secondary: ${op2};\n  --dot-size: ${dotSize};\n  --watermark-opacity: ${watermarkOp};\n}\n\nbody {\n  background: linear-gradient(135deg, var(--bg-top) 0%, var(--bg-mid) 50%, var(--bg-bot) 100%);\n}\n\n.bg-medical-grid {\n  background-image:\n    radial-gradient(rgba(30, 64, 175, var(--dot-opacity)) var(--dot-size), transparent var(--dot-size)),\n    radial-gradient(rgba(13, 148, 136, var(--dot-opacity-secondary)) var(--dot-size), transparent var(--dot-size));\n  background-size: 28px 28px;\n  background-position: 0 0, 14px 14px;\n}`;
+
+            const tempInput = document.createElement('textarea');
+            tempInput.value = cssSnippet;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            showToast(`Copied clean :root & background CSS!`, 'success');
+        }
+
+        // Initialize on load
+        window.onload = function() {
+            updateBgScales();
+            renderPromisesGrid();
+            renderDoctorsTable();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+/* ===================================================================
+   CUSTOM DROPDOWN COMPONENT STYLES
+   Replacement for native HTML <select> with Sunrise Promise theme
+   =================================================================== */
+
+.custom-dropdown-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+/* Base trigger button */
+.custom-dropdown-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  background-color: var(--card, #ffffff);
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 12px;
+  padding: 0.65rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--foreground, #1e293b);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+  text-align: left;
+  outline: none;
+  min-height: 42px;
+}
+
+.custom-dropdown-trigger:hover:not(:disabled) {
+  border-color: var(--primary, oklch(0.56 0.2 15));
+  box-shadow: 0 2px 8px color-mix(in oklab, var(--primary, #e11d48) 12%, transparent);
+}
+
+.custom-dropdown-container.is-open .custom-dropdown-trigger {
+  border-color: var(--primary, oklch(0.56 0.2 15));
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--primary, #e11d48) 18%, transparent);
+}
+
+.custom-dropdown-container.disabled .custom-dropdown-trigger {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #f8fafc;
+}
+
+.custom-dropdown-label {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--foreground, #1e293b);
+}
+
+.custom-dropdown-label.is-placeholder {
+  color: var(--muted-foreground, #94a3b8);
+  font-weight: 400;
+}
+
+.custom-dropdown-chevron {
+  color: var(--muted-foreground, #64748b);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.custom-dropdown-chevron.rotate {
+  transform: rotate(180deg);
+  color: var(--primary, oklch(0.56 0.2 15));
+}
+
+/* Popover Menu */
+.custom-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  min-width: 100%;
+  max-height: 240px;
+  overflow-y: auto;
+  background: var(--card, #ffffff);
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+  z-index: 1050;
+  padding: 4px;
+  box-sizing: border-box;
+  animation: dropdownFadeIn 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Option item */
+.custom-dropdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.55rem 0.85rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--foreground, #334155);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  user-select: none;
+}
+
+.custom-dropdown-item:hover {
+  background-color: var(--secondary, oklch(0.96 0.035 22));
+  color: var(--primary, oklch(0.56 0.2 15));
+}
+
+.custom-dropdown-item.selected {
+  background-color: color-mix(in oklab, var(--primary, #e11d48) 12%, transparent);
+  color: var(--primary, oklch(0.56 0.2 15));
+  font-weight: 700;
+}
+
+.custom-dropdown-item-text {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.custom-dropdown-item-check {
+  color: var(--primary, oklch(0.56 0.2 15));
+  flex-shrink: 0;
+  margin-left: 0.5rem;
+}
+
+.custom-dropdown-empty {
+  padding: 0.75rem 1rem;
+  font-size: 0.88rem;
+  color: var(--muted-foreground, #94a3b8);
+  text-align: center;
+}
+
+/* ===================================================================
+   COMPACT VARIANT (for "Show 10 entries" in Datatables)
+   =================================================================== */
+.custom-dropdown-container.custom-dropdown-compact {
+  width: auto;
+  min-width: 68px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.custom-dropdown-container.custom-dropdown-compact .custom-dropdown-trigger {
+  min-height: 32px;
+  padding: 4px 10px;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  gap: 0.25rem;
+}
+
+.custom-dropdown-container.custom-dropdown-compact .custom-dropdown-menu {
+  min-width: 72px;
+  max-height: 180px;
+}
+
+.custom-dropdown-container.custom-dropdown-compact .custom-dropdown-item {
+  padding: 4px 8px;
+  font-size: 0.85rem;
+}

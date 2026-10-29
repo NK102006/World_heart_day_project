@@ -1,0 +1,22 @@
+export const ALL_HABITS = [
+  { id: 1, title: 'Take Medicines on Time', desc: 'I will never skip my daily heart, BP, or diabetes medications.', icon: '💊' },
+  { id: 2, title: 'Cut Down on Salt', desc: 'I promise to reduce salty snacks and extra salt in my meals.', icon: '🧂' },
+  { id: 3, title: 'Cut Sugary Drinks', desc: 'I promise to reduce soft drinks, packaged sweet drinks, and extra sugar in tea or coffee.', icon: '🥤' },
+  { id: 4, title: 'Avoid Trans Fats', desc: 'I will limit processed foods and choose healthy cooking oils.', icon: '🥑' },
+  { id: 5, title: 'Never Ignore Symptoms', desc: 'I will seek medical help immediately for chest pain or breathlessness.', icon: '🚨' },
+  { id: 6, title: 'Digital Detox Before Bed', desc: 'I will put away screens at night for deeper, heart-healing rest.', icon: '📵' },
+  { id: 7, title: 'Eat Fiber-Rich Foods', desc: 'I will eat fresh fruits, vegetables, and whole grains every day.', icon: '🥗' },
+  { id: 8, title: 'Post-Meal Stroll', desc: 'I will take a 10-minute walk after dinner to aid metabolism.', icon: '🚶' },
+  { id: 9, title: 'Active Weekends', desc: 'I will choose outdoor sports, cycling, or nature walks on weekends.', icon: '🚴' },
+  { id: 10, title: 'Read Food Labels', desc: 'I will read food packets to avoid hidden sodium and bad fats.', icon: '🏷️' },
+  { id: 11, title: 'I will stay active', desc: 'I will exercise regularly and keep my heart strong.', icon: '🏃‍♂️' },
+  { id: 12, title: 'I will eat healthy', desc: 'I will choose nutritious, balanced meals for a healthy heart.', icon: '🥦' },
+  { id: 13, title: 'I will maintain a healthy weight', desc: 'I will keep my weight in check to reduce strain on my heart.', icon: '⚖️' },
+  { id: 14, title: 'I will say no to tobacco', desc: 'I will avoid tobacco in any form to protect my heart.', icon: '🚭' },
+  { id: 15, title: 'I will monitor my blood pressure', desc: 'I will keep my blood pressure in control.', icon: '💓' },
+  { id: 16, title: 'I will keep my cholesterol in check', desc: 'I will get regular check-ups and follow healthy habits.', icon: '🩺' },
+  { id: 17, title: 'I will keep my blood sugar in control', desc: 'I will manage my blood sugar to protect my heart.', icon: '🩸' },
+  { id: 18, title: 'I will manage stress', desc: 'I will take time to relax, meditate and care for my mental well-being.', icon: '🧘' },
+  { id: 19, title: 'I will sleep well', desc: 'I will get enough quality sleep and let my heart rest and heal.', icon: '😴' },
+  { id: 20, title: 'Limit Alcohol', desc: 'I promise not to start drinking for heart health, and to limit alcohol if I already drink.', icon: '🍷' }
+];

@@ -1,0 +1,316 @@
+/* ==========================================================================
+   WORLD HEART DAY 2026 - CLINICAL PHARMA PORTAL DESIGN SYSTEM
+   Extracted from world_heart_day_pharma_portal_ui.html
+   ========================================================================== */
+
+:root {
+  --bg-top: #DBEBFC;
+  --bg-mid: #C9E0FA;
+  --bg-bot: #B9D6F6;
+  --dot-opacity: 0.22;
+  --dot-opacity-secondary: 0.16;
+  --dot-size: 1.4px;
+  --dot-spacing: 28px;
+  --watermark-opacity: 0.55;
+
+  /* Brand Pharma Color Tokens */
+  --brand-teal: #0D9488;
+  --brand-cyan: #0284C7;
+  --brand-royal: #1E40AF;
+  --brand-emerald: #10B981;
+  --surface-glass: rgba(255, 255, 255, 0.95);
+
+  /* Override original crimson theme on User Portal with Trustworthy Clinical Teal */
+  --primary-red: #0D9488;
+  --primary-red-hover: #0F766E;
+  --primary-red-glow: rgba(13, 148, 136, 0.25);
+  --border-focus: #0D9488;
+}
+
+/* Base Body Treatment */
+body {
+  color: #0F172A;
+  overflow-x: hidden;
+  transition: background 0.15s ease-out;
+}
+
+.font-script {
+  font-family: 'Dancing Script', 'Caveat', cursive;
+}
+
+.font-display {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Dynamic Medical Dot-Matrix Grid Pattern Overlay - Exact from world_heart_day_pharma_portal_ui.html */
+.bg-medical-grid {
+  background-color: var(--bg-bot) !important;
+  background-image: 
+    radial-gradient(rgba(30, 64, 175, var(--dot-opacity)) var(--dot-size), transparent var(--dot-size)),
+    radial-gradient(rgba(13, 148, 136, var(--dot-opacity-secondary)) var(--dot-size), transparent var(--dot-size)),
+    linear-gradient(135deg, var(--bg-top) 0%, var(--bg-mid) 50%, var(--bg-bot) 100%) !important;
+  background-size: var(--dot-spacing) var(--dot-spacing), var(--dot-spacing) var(--dot-spacing), 100% 100% !important;
+  background-position: 0 0, calc(var(--dot-spacing) / 2) calc(var(--dot-spacing) / 2), 0 0 !important;
+  background-repeat: repeat, repeat, no-repeat !important;
+  background-attachment: fixed !important;
+}
+
+/* Richer Animated Pharma Background Orbs */
+.ambient-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(65px);
+  opacity: calc(var(--watermark-opacity) * 0.95);
+  pointer-events: none;
+  z-index: 0;
+  animation: floatOrb 16s ease-in-out infinite alternate;
+}
+
+.orb-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(2, 132, 199, 0.42) 0%, rgba(13, 148, 136, 0.14) 70%);
+  top: -110px;
+  left: -120px;
+}
+
+.orb-2 {
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(circle, rgba(30, 64, 175, 0.34) 0%, rgba(14, 165, 233, 0.12) 70%);
+  bottom: -170px;
+  right: -100px;
+  animation-delay: -7s;
+}
+
+.orb-3 {
+  width: 390px;
+  height: 390px;
+  background: radial-gradient(circle, rgba(13, 148, 136, 0.32) 0%, rgba(30, 64, 175, 0.10) 70%);
+  top: 32%;
+  left: 52%;
+  animation-delay: -11s;
+}
+
+@keyframes floatOrb {
+  0% { transform: translate(0px, 0px) scale(1); }
+  50% { transform: translate(38px, -28px) scale(1.07); }
+  100% { transform: translate(-28px, 32px) scale(0.95); }
+}
+
+/* Animated Floating Pharma Dots in Background */
+.floating-dot {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: var(--watermark-opacity);
+  animation: pulseDrift 7s ease-in-out infinite alternate;
+}
+
+@keyframes pulseDrift {
+  0% { transform: translateY(0px) translateX(0px) scale(0.95); }
+  50% { transform: translateY(-18px) translateX(10px) scale(1.2); }
+  100% { transform: translateY(12px) translateX(-10px) scale(1); }
+}
+
+/* Animated ECG Pulse Line */
+.ecg-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawEcg 8s linear infinite;
+}
+
+@keyframes drawEcg {
+  0% { stroke-dashoffset: 1000; opacity: 0.25; }
+  20% { opacity: 0.75; }
+  80% { opacity: 0.75; }
+  100% { stroke-dashoffset: 0; opacity: 0.25; }
+}
+
+/* Slow floating geometric heart/molecular watermark */
+.floating-watermark {
+  opacity: var(--watermark-opacity);
+  animation: slowPulse 9s ease-in-out infinite;
+}
+
+@keyframes slowPulse {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-12px) scale(1.025); }
+}
+
+/* Glassmorphic Card Surface */
+.pharma-card {
+  background: var(--surface-glass);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 24px 55px -12px rgba(15, 23, 42, 0.14), 0 6px 20px -3px rgba(2, 132, 199, 0.10);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Explicit Clinical Blue Border for Doctor Details Card */
+.medportal-doctor-details-card,
+.doctor-details-card,
+.details-card,
+.wizard-center-box.doctor-details-active {
+  border: 1.5px solid #0284C7 !important;
+  box-shadow: 0 10px 30px -5px rgba(2, 132, 199, 0.15) !important;
+}
+
+.pharma-card::before,
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #0d9488, #0284c7, #1e40af, #0d9488);
+  background-size: 200% 100%;
+  animation: pharmaAccentSweep 5s ease infinite;
+  z-index: 2;
+}
+
+@keyframes pharmaAccentSweep {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Primary Gradient Button */
+.btn-pharma-primary,
+.btn-primary,
+.btn-save-next {
+  background: linear-gradient(135deg, #0D9488 0%, #0284C7 100%) !important;
+  box-shadow: 0 8px 20px -4px rgba(2, 132, 199, 0.38) !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+.btn-pharma-primary:hover:not(:disabled),
+.btn-primary:hover:not(:disabled),
+.btn-save-next:hover:not(:disabled) {
+  background: linear-gradient(135deg, #0F766E 0%, #0369A1 100%) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 12px 24px -4px rgba(2, 132, 199, 0.48) !important;
+}
+
+.btn-pharma-primary:disabled,
+.btn-primary:disabled,
+.btn-save-next:disabled {
+  background: linear-gradient(135deg, #94A3B8 0%, #CBD5E1 100%) !important;
+  box-shadow: none !important;
+  cursor: not-allowed !important;
+}
+
+/* Badge digits */
+.badge-step-digit {
+  background: linear-gradient(135deg, #0D9488, #0284C7) !important;
+  color: #fff !important;
+  border-radius: 9999px !important;
+}
+
+/* Selected Habit/Promise Card */
+.habit-card-item.selected,
+.habit-card.selected,
+.promise-card.selected {
+  background: linear-gradient(135deg, rgba(240, 253, 250, 0.95) 0%, rgba(224, 239, 254, 0.85) 100%) !important;
+  border-color: #0D9488 !important;
+  box-shadow: 0 10px 25px -5px rgba(13, 148, 136, 0.2), 0 0 0 1px rgba(13, 148, 136, 0.4) !important;
+}
+
+.habit-card-item.selected .habit-checkbox,
+.habit-checkbox.checked {
+  background: #0D9488 !important;
+  border-color: #0D9488 !important;
+  color: #fff !important;
+}
+
+/* Custom Scrollbar */
+.custom-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scroll::-webkit-scrollbar-track {
+  background: #F1F5F9;
+  border-radius: 8px;
+}
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: #94A3B8;
+  border-radius: 8px;
+}
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: #0D9488;
+}
+
+/* Custom Range Slider Styling */
+input[type="range"].pharma-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 999px;
+  background: #E2E8F0;
+  outline: none;
+}
+input[type="range"].pharma-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0D9488, #0284C7);
+  cursor: pointer;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.35);
+  transition: transform 0.15s ease;
+}
+input[type="range"].pharma-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ==========================================================================
+   DOCTOR DETAILS CARD - BLUE UPPERSIDE BORDER SPECIFICATION
+   ========================================================================== */
+.medportal-doctor-details-card,
+.doctor-details-card,
+.details-card.doctor-details-active,
+.wizard-center-box.doctor-details-active {
+  border: 1px solid var(--border, #BAE6FD) !important;
+  box-shadow: 0 10px 30px -5px rgba(2, 132, 199, 0.10) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.medportal-doctor-details-card::before,
+.doctor-details-card::before,
+.details-card.doctor-details-active::before,
+.wizard-center-box.doctor-details-active::before,
+.wizard-center-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #0D9488 0%, #0284C7 50%, #1E40AF 100%) !important;
+  z-index: 5;
+}
+
+.medportal-doctor-details-card:hover,
+.doctor-details-card:hover,
+.details-card.doctor-details-active:hover,
+.wizard-center-box.doctor-details-active:hover {
+  border-color: #BAE6FD !important;
+  box-shadow: 0 16px 36px -8px rgba(2, 132, 199, 0.18) !important;
+}
